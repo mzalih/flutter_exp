@@ -3,7 +3,12 @@ import 'package:animator/animator.dart';
 import 'package:flutter/widgets.dart';
 
 class Loader extends StatelessWidget {
-  Loader({Key key}) : super(key: key);
+
+  int repeatCount = 1;
+  int type = 1;
+  Loader({int count}){
+      this.repeatCount = count;
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +22,13 @@ class Loader extends StatelessWidget {
   }
 
   Widget getListMessage(int number){
-   return  Column(children: <Widget>[
-            getMessage(),
-            getMessage(),
-            getMessage(),
-          ],);
+    List<Widget> list = new List();
+    for (var i = 0; i < repeatCount; i++) {
+    //  if(type ==1){
+        list.add(getMessage()); 
+    //  }
+    }
+   return  Column(children:list);
   }
 
   Widget getMessage(){
